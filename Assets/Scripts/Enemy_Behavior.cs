@@ -17,12 +17,17 @@ public class Enemy_Behavior : MonoBehaviour
     void Update()
     {
         this.transform.Translate(new Vector3(0f, -enemySpeed * Time.deltaTime , 0f));
-
-
+      
     }
 
     void FixedUpdate() {
         
 
     }
+
+    void OnCollisionEnter2D(Collision2D col)
+    {
+        
+    }
+
 }
