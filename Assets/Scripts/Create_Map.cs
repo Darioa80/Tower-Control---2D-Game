@@ -8,8 +8,8 @@ public class Create_Map : MonoBehaviour
     //public Transform Enemy;
     public GameObject Path_Tile;
     public GameObject Non_Path_Tile;
-    private GameObject Temp;
-
+    GameObject Temp;
+    Position tempPosition;
     public float mapWidth;
     public float mapHeight;
     private int count;
@@ -40,8 +40,10 @@ public class Create_Map : MonoBehaviour
     {
         for (int width_index = 0; width_index < mapWidth; width_index++) {
             for (int height_index = 0; height_index < mapHeight; height_index++) {
-                Instantiate(Non_Path_Tile, new Vector3(0.5f + width_index,-0.5f - height_index, 0f), Quaternion.identity);
-             
+                //Instantiate(Non_Path_Tile, new Vector3(0.5f + width_index,-0.5f - height_index, 0f), Quaternion.identity);
+                Temp = Instantiate(Non_Path_Tile, new Vector3(0.5f + width_index, -0.5f - height_index, 0f), Quaternion.identity) as GameObject;
+                Temp.GetComponent<Position>().x_Coordinate = 0.5f + width_index;
+                Temp.GetComponent<Position>().y_Coordinate = -0.5f - height_index;
             }
 
         }
