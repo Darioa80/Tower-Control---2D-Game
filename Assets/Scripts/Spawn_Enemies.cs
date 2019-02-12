@@ -24,7 +24,7 @@ public class Spawn_Enemies : MonoBehaviour
     {
         if (enemyCount < numEnemies)
         {
-            if (enemyTimer > 0.6f)
+            if (enemyTimer > 1.5f)
             {
                 Temp = Instantiate(Enemy, new Vector3(spawnCoordinate_x, spawnCoordinate_y, 0), Quaternion.identity);
                 Temp.parent = Parent.transform;
