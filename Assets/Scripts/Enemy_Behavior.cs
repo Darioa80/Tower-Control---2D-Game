@@ -8,16 +8,18 @@ public class Enemy_Behavior : MonoBehaviour
     //public Transform Enemy;
     public float enemySpeed;
     float enemyTimer = 0f;
+    private float horizontalSpeed = 0f;
+    private float verticalSpeed = 0f;
     void Start()
     {
-      
+        verticalSpeed = enemySpeed * Time.deltaTime;
+        this.transform.Translate(new Vector3(horizontalSpeed, -verticalSpeed, 0f));
     }
 
     // Update is called once per frame
     void Update()
     {
-        this.transform.Translate(new Vector3(0f, -enemySpeed * Time.deltaTime , 0f));
-      
+        this.transform.Translate(new Vector3(horizontalSpeed, -verticalSpeed, 0f));
     }
 
     void FixedUpdate() {
@@ -27,7 +29,15 @@ public class Enemy_Behavior : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D col)
     {
-        
+        if (verticalSpeed < 0f)
+        {
+            horizontalSpeed = verticalSpeed;
+            verticalSpeed = 0f;
+        }
+        else if (horizontalSpeed > 0f) {
+            verticalSpeed = horizontalSpeed;
+            horizontalSpeed = 0f;
+        }
     }
 
 }

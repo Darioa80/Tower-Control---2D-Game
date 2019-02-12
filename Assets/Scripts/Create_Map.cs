@@ -6,12 +6,14 @@ public class Create_Map : MonoBehaviour
 {
     // Start is called before the first frame update
     //public Transform Enemy;
-    public Transform Path_Tile;
-    public Transform Non_Path_Tile;
+    public GameObject Path_Tile;
+    public GameObject Non_Path_Tile;
+    private GameObject Temp;
 
     public float mapWidth;
     public float mapHeight;
     private int count;
+
     private float last_y_Position = 0f;
     private float last_x_Position = 0f;
 
@@ -19,7 +21,7 @@ public class Create_Map : MonoBehaviour
     {
         CreateMap();
         //Instantiate(Enemy, new Vector3(-5.5f, 4.5f, 0), Quaternion.identity);
-
+      
     }
 
     // Update is called once per frame
@@ -39,7 +41,7 @@ public class Create_Map : MonoBehaviour
         for (int width_index = 0; width_index < mapWidth; width_index++) {
             for (int height_index = 0; height_index < mapHeight; height_index++) {
                 Instantiate(Non_Path_Tile, new Vector3(0.5f + width_index,-0.5f - height_index, 0f), Quaternion.identity);
-
+             
             }
 
         }

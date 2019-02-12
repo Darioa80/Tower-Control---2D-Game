@@ -223,7 +223,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56755ae51afc32e4a9868f3c68262a5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Enemy: {fileID: 5425897620194019844, guid: cadca85af195b7a4ea56998957164ec1, type: 3}
+  Enemy: {fileID: 8394351637210636956, guid: 8703486d327e43148af517a293b6612e, type: 3}
+  Parent: {fileID: 779810015}
+  numEnemies: 5
   spawnCoordinate_x: 1.5
   spawnCoordinate_y: -0.5
 --- !u!4 &779810017
@@ -269,9 +271,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d6a4dced7fda97428e06922347db3b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Path_Tile: {fileID: 7356748181105278262, guid: f6255c8b16c7dae48b7a497225119bf4,
+  Path_Tile: {fileID: 542739783060356446, guid: 44ab051170e349f42a181389a2f0d8a0,
     type: 3}
-  Non_Path_Tile: {fileID: 1590809122872043424, guid: a63fa7c2f271fd542aac7d9405498f8a,
+  Non_Path_Tile: {fileID: 5007013265127446083, guid: f2792d20feb45e742880a376955bddbd,
     type: 3}
   mapWidth: 15
   mapHeight: 8
