@@ -1467,7 +1467,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Enemy: {fileID: 8394351637210636956, guid: 8703486d327e43148af517a293b6612e, type: 3}
   Parent: {fileID: 779810015}
-  numEnemies: 5
+  numEnemies: 1
   spawnCoordinate_x: 1.5
   spawnCoordinate_y: -0.5
 --- !u!4 &779810017
