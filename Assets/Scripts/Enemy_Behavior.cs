@@ -32,11 +32,12 @@ public class Enemy_Behavior : MonoBehaviour
     void OnCollisionEnter2D(Collision2D col)
     {
         //LowerCollisionSize();
-        Vector2 off = new Vector2(this.transform.position.x+0.5f, this.transform.position.y + 0.5f);
+        Vector2 off = new Vector2(this.transform.position.x, this.transform.position.y + 0.6f);
+        Vector2 lowOff = new Vector2(this.transform.position.x, this.transform.position.y - 0.6f);
         if (verticalSpeed < 0f)
         {
             hit = Physics2D.Raycast(off, Vector2.right);
-            hitCollider = hit.collider;
+           
             print("Hit Collider: " + hit.collider);
             print("Hit distance: " + hit.distance);
             if (hit.distance > 1)
@@ -47,14 +48,32 @@ public class Enemy_Behavior : MonoBehaviour
             else {
                 horizontalSpeed = verticalSpeed;
             }
-            this.transform.position = new Vector3(this.transform.position.x, this.transform.position.y + 0.1f, 0f);
+            this.transform.position = new Vector3(this.transform.position.x, this.transform.position.y + 0.2f, 0f);
             verticalSpeed = 0f;
         }
+
+        else if (verticalSpeed > 0f)
+        {
+            Debug.DrawRay(this.transform.position, this.transform.right * 2f, Color.yellow);
+            hit = Physics2D.Raycast(lowOff, Vector2.right);
+          
+            if (hit.distance < 1)
+            {
+                horizontalSpeed = -verticalSpeed;
+            }
+            else
+            {
+                horizontalSpeed = Mathf.Abs(verticalSpeed);
+            }
+            this.transform.position = new Vector3(this.transform.position.x, this.transform.position.y - 0.1f, 0f);
+            verticalSpeed = 0f;
+        }
+
         else if (horizontalSpeed > 0f) {
-            Debug.DrawRay(this.transform.position, (new Vector3(this.transform.position.x, this.transform.position.y + 2f, 0f) - this.transform.position) * 2f, Color.yellow);
-            //bool test = Physics2D.Raycast(this.transform.position, new Vector3(this.transform.position.x, this.transform.position.y + 2f, 0f) - this.transform.position, 10f);
+            Debug.DrawRay(this.transform.position, (new Vector3(this.transform.position.x, this.transform.position.y + 1f, 0f) - this.transform.position) * 2f, Color.yellow);
+          
             hit = Physics2D.Raycast(off, Vector2.up);
-            hitCollider = hit.collider;
+            
             print("Hit Collider: " + hit.collider);
             print("Hit distance: " + hit.distance);
            
@@ -67,38 +86,27 @@ public class Enemy_Behavior : MonoBehaviour
                 verticalSpeed = horizontalSpeed;
             }
             horizontalSpeed = 0f;
-            this.transform.position = new Vector3(this.transform.position.x - 0.1f, this.transform.position.y-0.1f, 0f);
+            this.transform.position = new Vector3(this.transform.position.x - 0.1f, this.transform.position.y, 0f);
         }
 
         else if (horizontalSpeed < 0f)
         {
-            if (!Physics.Raycast(this.transform.position, this.transform.up, 2f))
+            hit = Physics2D.Raycast(off, Vector2.up);
+            print("Hit Collider: " + hit.collider);
+            print("Hit distance: " + hit.distance);
+            if (hit.distance < 1)
             {
                 verticalSpeed = horizontalSpeed;
             }
             else
             {
-                verticalSpeed = -horizontalSpeed;
+                verticalSpeed = Mathf.Abs(horizontalSpeed);
             }
             this.transform.position = new Vector3(this.transform.position.x - 0.1f, this.transform.position.y, 0f);
             horizontalSpeed = 0f;
         }
 
-        else if (verticalSpeed > 0f) {
-            Debug.DrawRay(this.transform.position, this.transform.right *2f, Color.yellow);
-            bool test2 = Physics.Raycast(this.transform.position, this.transform.right, 2f);
-            print("test2: " + test2);
-            if (test2)
-            { 
-                horizontalSpeed = verticalSpeed;
-            }
-            else
-            {
-                horizontalSpeed = Mathf.Abs(verticalSpeed);
-            }
-            this.transform.position = new Vector3(this.transform.position.x, this.transform.position.y - 0.1f, 0f);
-            verticalSpeed = 0f;
-        }
+
     }
 
 
