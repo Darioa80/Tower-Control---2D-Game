@@ -12,6 +12,7 @@ public class Spawn_Enemies : MonoBehaviour
     private Transform Temp;
     public float spawnCoordinate_x;
     public float spawnCoordinate_y;
+    public float enemySpawnTimer;
     private int enemyCount = 0;
 
     void Start()
@@ -24,7 +25,7 @@ public class Spawn_Enemies : MonoBehaviour
     {
         if (enemyCount < numEnemies)
         {
-            if (enemyTimer > 2f)
+            if (enemyTimer > enemySpawnTimer)
             {
                 Temp = Instantiate(Enemy, new Vector3(spawnCoordinate_x, spawnCoordinate_y, 0), Quaternion.identity);
                 Temp.parent = Parent.transform;

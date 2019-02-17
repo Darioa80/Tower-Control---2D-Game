@@ -2,20 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy_Behavior : MonoBehaviour
+public class Enemy : MonoBehaviour
 {
-    // Start is called before the first frame update
-    //public Transform Enemy;
+    public float health;
     public float enemySpeed;
     float enemyTimer = 0f;
     public float horizontalSpeed = 0f;
     public float verticalSpeed = 0f;
-    public Collider2D hitCollider;
+    private Collider2D hitCollider;
     private RaycastHit2D hit;
     void Start()
     {
         verticalSpeed = -(enemySpeed * Time.deltaTime);
-       
+
     }
 
     // Update is called once per frame
@@ -24,30 +23,27 @@ public class Enemy_Behavior : MonoBehaviour
         this.transform.Translate(new Vector3(horizontalSpeed, verticalSpeed, 0f));
     }
 
-    void FixedUpdate() {
-        
+    void FixedUpdate()
+    {
+
 
     }
 
     void OnCollisionEnter2D(Collision2D col)
     {
         //LowerCollisionSize();
-       
-
         Vector2 off = new Vector2(this.transform.position.x, this.transform.position.y + 0.6f);
         Vector2 lowOff = new Vector2(this.transform.position.x, this.transform.position.y - 0.6f);
         if (verticalSpeed < 0f)
         {
             hit = Physics2D.Raycast(off, Vector2.right);
-           
-            print("Hit Collider: " + hit.collider);
-            print("Hit distance: " + hit.distance);
             if (hit.distance > 1)
             {
 
                 horizontalSpeed = Mathf.Abs(verticalSpeed);
             }
-            else {
+            else
+            {
                 horizontalSpeed = verticalSpeed;
             }
             this.transform.position = new Vector3(this.transform.position.x, this.transform.position.y + 0.2f, 0f);
@@ -58,7 +54,7 @@ public class Enemy_Behavior : MonoBehaviour
         {
             Debug.DrawRay(this.transform.position, this.transform.right * 2f, Color.yellow);
             hit = Physics2D.Raycast(lowOff, Vector2.right);
-          
+
             if (hit.distance < 1)
             {
                 horizontalSpeed = -verticalSpeed;
@@ -71,20 +67,18 @@ public class Enemy_Behavior : MonoBehaviour
             verticalSpeed = 0f;
         }
 
-        else if (horizontalSpeed > 0f) {
+        else if (horizontalSpeed > 0f)
+        {
             Debug.DrawRay(this.transform.position, (new Vector3(this.transform.position.x, this.transform.position.y + 1f, 0f) - this.transform.position) * 2f, Color.yellow);
-          
+
             hit = Physics2D.Raycast(off, Vector2.up);
-            
-            print("Hit Collider: " + hit.collider);
-            print("Hit distance: " + hit.distance);
-           
             if (hit.distance < 1)
             {
-                verticalSpeed = -horizontalSpeed;   
+                verticalSpeed = -horizontalSpeed;
             }
-            else {
-                
+            else
+            {
+
                 verticalSpeed = horizontalSpeed;
             }
             horizontalSpeed = 0f;
@@ -94,8 +88,6 @@ public class Enemy_Behavior : MonoBehaviour
         else if (horizontalSpeed < 0f)
         {
             hit = Physics2D.Raycast(off, Vector2.up);
-            print("Hit Collider: " + hit.collider);
-            print("Hit distance: " + hit.distance);
             if (hit.distance < 1)
             {
                 verticalSpeed = horizontalSpeed;
