@@ -5,6 +5,9 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
     // Start is called before the first frame update
+    public float damage;
+    public Sprite image;
+
     void Start()
     {
         
@@ -15,4 +18,6 @@ public class Projectile : MonoBehaviour
     {
         
     }
+
+
 }
