@@ -8,8 +8,11 @@ public class Tower : MonoBehaviour
     public float fireRate;
     public float xCoordinate;
     public float yCoordinate;
-    public float Range;
-    public string Name;
+    public float range;
+    public int damage;
+    public string name;
+    public int cost;
+    public int Level;
     void Start()
     {
         

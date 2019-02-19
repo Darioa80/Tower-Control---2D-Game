@@ -2,18 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PLayer : MonoBehaviour
+public class Player : MonoBehaviour
 {
     // Start is called before the first frame update
-    public int Money;
-    public int Health;
-    public int Score;
+    public int money;
+    public int health;
+    public int score;
 
     void Start()
     {
-        Money = 100;
-        Health = 10;
-        Score = 0;
+        money = 100;
+        health = 10;
+        score = 0;
     }
 
     // Update is called once per frame
