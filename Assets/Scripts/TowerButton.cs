@@ -59,6 +59,7 @@ public class TowerButton : MonoBehaviour
     }
 
     public void CreateTower() {
+        TextBox.text = "You have selected the " + currTower.name + " Tower. Click on any area of dirt to place the tower.";
         if (Input.GetKey(KeyCode.Mouse0))
         {
             Vector3 mouseLoc = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -67,6 +68,7 @@ public class TowerButton : MonoBehaviour
             tempTower.yCoordinate = mouseLoc.y;
             //towerMap.SetTile(new Vector3Int((int)Mathf.Round(tempTower.xCoordinate), (int)Mathf.Round(tempTower.yCoordinate), 0), tempTower); 
             towerClicked = false;
+            UpdateToOriginalText();
         }
 
 

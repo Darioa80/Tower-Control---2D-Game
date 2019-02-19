@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6430821173271140883}
   - component: {fileID: 5358876703289988826}
   - component: {fileID: 4127576932279496673}
+  - component: {fileID: 1338939145307407898}
   m_Layer: 0
   m_Name: Pinneaple Tower
   m_TagString: Untagged
@@ -92,3 +93,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90b5de4d975fe1641bdd39ec74679405, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fireRate: 5
+  xCoordinate: 0
+  yCoordinate: 0
+  range: 0
+  damage: 20
+  name: Pineapple
+  cost: 80
+  Level: 1
+--- !u!61 &1338939145307407898
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3531016955828438942}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.64, y: 0.64}
+    newSize: {x: 0.64, y: 0.64}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.64, y: 0.64}
+  m_EdgeRadius: 0
