@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Exit_Delete_Enemy : MonoBehaviour
 {
-    private Enemy En;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -16,9 +16,9 @@ public class Exit_Delete_Enemy : MonoBehaviour
     {
         
     }
-    void onTriggerEnter2D(Collider2D col) {
-        print("tag: " + col.tag);
-        if (col.CompareTag("Enemy")) {
+    public void onTriggerEnter2D(Collider2D col) {
+        print("tag: " + col.gameObject.tag);
+        if (col.gameObject.CompareTag("Enemy")) {
             Destroy(col.gameObject);
         }
     }
