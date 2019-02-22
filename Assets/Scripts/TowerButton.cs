@@ -63,6 +63,7 @@ public class TowerButton : MonoBehaviour
         if (Input.GetKey(KeyCode.Mouse0))
         {
             Vector3 mouseLoc = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            mouseLoc.z = 0f;
             Tower tempTower = Instantiate(currTower, mouseLoc, Quaternion.identity);
             tempTower.xCoordinate = mouseLoc.x;
             tempTower.yCoordinate = mouseLoc.y;
