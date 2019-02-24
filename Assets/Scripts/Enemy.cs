@@ -37,17 +37,22 @@ public class Enemy : MonoBehaviour
         if (verticalSpeed < 0f)
         {
             hit = Physics2D.Raycast(off, Vector2.right);
+            
             if (hit.distance > 1)
             {
 
                 horizontalSpeed = Mathf.Abs(verticalSpeed);
+                this.transform.GetChild(0).transform.Rotate(0, 0, 90);
             }
             else
             {
                 horizontalSpeed = verticalSpeed;
+                this.transform.GetChild(0).transform.Rotate(0, 0, -90);
             }
             this.transform.position = new Vector3(this.transform.position.x, this.transform.position.y + 0.2f, 0f);
             verticalSpeed = 0f;
+            print("turn right");
+
         }
 
         else if (verticalSpeed > 0f)
@@ -58,10 +63,12 @@ public class Enemy : MonoBehaviour
             if (hit.distance < 1)
             {
                 horizontalSpeed = -verticalSpeed;
+                this.transform.GetChild(0).transform.Rotate(0, 0, 90);
             }
             else
             {
                 horizontalSpeed = Mathf.Abs(verticalSpeed);
+                this.transform.GetChild(0).transform.Rotate(0, 0, -90);
             }
             this.transform.position = new Vector3(this.transform.position.x, this.transform.position.y - 0.1f, 0f);
             verticalSpeed = 0f;
@@ -75,13 +82,16 @@ public class Enemy : MonoBehaviour
             if (hit.distance < 1)
             {
                 verticalSpeed = -horizontalSpeed;
+                this.transform.GetChild(0).transform.Rotate(0, 0, -90);
             }
             else
             {
 
                 verticalSpeed = horizontalSpeed;
+                this.transform.GetChild(0).transform.Rotate(0, 0, 90);
             }
             horizontalSpeed = 0f;
+            
             this.transform.position = new Vector3(this.transform.position.x - 0.1f, this.transform.position.y, 0f);
         }
 
@@ -91,10 +101,12 @@ public class Enemy : MonoBehaviour
             if (hit.distance < 1)
             {
                 verticalSpeed = horizontalSpeed;
+                this.transform.GetChild(0).transform.Rotate(0, 0, 90);
             }
             else
             {
                 verticalSpeed = Mathf.Abs(horizontalSpeed);
+                this.transform.GetChild(0).transform.Rotate(0, 0, -90);
             }
             this.transform.position = new Vector3(this.transform.position.x - 0.1f, this.transform.position.y, 0f);
             horizontalSpeed = 0f;
@@ -102,7 +114,6 @@ public class Enemy : MonoBehaviour
 
 
     }
-
 
 
 }

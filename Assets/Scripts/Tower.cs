@@ -13,6 +13,9 @@ public class Tower : MonoBehaviour
     public string name;
     public int cost;
     public int Level;
+    public Projectile currPorjectile;
+    public Transform EnemyHold;
+    private List<Enemy> enemyList = new List<Enemy>();
     void Start()
     {
         
@@ -21,6 +24,11 @@ public class Tower : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        FindEnemy();
+    }
+
+    public void FindEnemy() {
+
+       // for (int i = 0; i < EnemyHold.)
     }
 }
