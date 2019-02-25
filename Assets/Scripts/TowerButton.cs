@@ -75,7 +75,8 @@ public class TowerButton : MonoBehaviour
 
     }
     public void UpdateToOriginalText() {
-        TextBox.text = "Hover over a tower icon to learn its details. \n\nClick on the tower to purchase it.";
+        TextBox.text = "Hover over a tower icon to learn its details. \nClick on the tower to purchase it. \n\nClick on the music icon to turn music on or off.";
+        //TextBox.text = "Hover over a tower icon to learn its details. \n\nClick on the tower to purchase it.";
     }
 
     public void onHover() {

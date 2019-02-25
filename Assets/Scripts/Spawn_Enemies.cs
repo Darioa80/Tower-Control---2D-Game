@@ -67,7 +67,7 @@ public class Spawn_Enemies : MonoBehaviour
             while (enemyTimer < enemySpawnTimer)
             {
                 enemyTimer += Time.deltaTime;
-                print(enemyTimer);
+               
             }
             Temp = Instantiate(EnemyToSpawn, new Vector3(spawnCoordinate_x, spawnCoordinate_y, 0), Quaternion.identity);
             enemyList.Add(Temp);
