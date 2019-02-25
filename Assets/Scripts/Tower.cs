@@ -14,21 +14,48 @@ public class Tower : MonoBehaviour
     public int cost;
     public int Level;
     public Projectile currPorjectile;
-    public Transform EnemyHold;
-    private List<Enemy> enemyList = new List<Enemy>();
+    public Spawn_Enemies EnemyManager;
+    //public List<Enemy> TargetList = new List<Enemy>();
+    public List<GameObject> TargetList = new List<GameObject>();
+    private Vector3 towerPosition;
     void Start()
     {
-        
+        towerPosition = new Vector3(xCoordinate, yCoordinate, 0f);
     }
 
     // Update is called once per frame
     void Update()
     {
-        FindEnemy();
+        if (EnemyManager.enemyList.Count > 0) {
+            FindEnemy();
+            checkTargets();
+        }
     }
 
     public void FindEnemy() {
 
-       // for (int i = 0; i < EnemyHold.)
+
+        for(int i = 0; i < EnemyManager.enemyList.Count; i++) {
+            if (!TargetList.Contains(EnemyManager.enemyList[i])) {
+                if (Vector3.SqrMagnitude(EnemyManager.enemyList[i].transform.position - towerPosition) < 4) {
+                    TargetList.Add(EnemyManager.enemyList[i]);
+                }
+            
+
+            }
+
+        }
+
+    }
+
+    public void checkTargets()
+    {
+        for (int i = 0; i < TargetList.Count; i++)
+        {
+            if (Vector3.SqrMagnitude(TargetList[i].transform.position - towerPosition) > 4)
+            {
+                TargetList.Remove(TargetList[i]);
+            }
+        }
     }
 }

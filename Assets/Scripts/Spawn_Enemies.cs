@@ -6,18 +6,21 @@ public class Spawn_Enemies : MonoBehaviour
 {
     // Start is called before the first frame update
     private float enemyTimer = 0f;
-    public Enemy Enemy;
-    public Enemy Enemy2;
+    // public Enemy Enemy;
+    // public Enemy Enemy2;
+    public GameObject Enemy;
+    public GameObject Enemy2;
+
     public int numWalkEnemies;
     public int numShieldEnemies;
-    private Enemy Temp;
+    private GameObject Temp;
     public float spawnCoordinate_x;
     public float spawnCoordinate_y;
     public float enemySpawnTimer;
     private int enemyCount1 = 0;
     private int enemyCount2 = 0;
-    public List<Enemy> enemyList = new List<Enemy>();
-
+    // public List<Enemy> enemyList = new List<Enemy>();
+    public List<GameObject> enemyList = new List<GameObject>();
 
     public void Update() {
         if (enemyCount1 < numWalkEnemies) {
@@ -59,7 +62,7 @@ public class Spawn_Enemies : MonoBehaviour
         }
 
     }*/
-    public void SpawnEnemies(Enemy EnemyToSpawn) {
+    public void SpawnEnemies(GameObject EnemyToSpawn) {
         enemyTimer = 0f;
             while (enemyTimer < enemySpawnTimer)
             {

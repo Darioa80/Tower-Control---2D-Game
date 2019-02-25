@@ -101,6 +101,10 @@ MonoBehaviour:
   name: Tomato
   cost: 40
   Level: 1
+  currPorjectile: {fileID: 0}
+  EnemyManager: {fileID: 4518941695075439679, guid: 63cd2a6cadd535d47adb558c4e409c5b,
+    type: 3}
+  TargetList: []
 --- !u!61 &1892966664072936290
 BoxCollider2D:
   m_ObjectHideFlags: 0
