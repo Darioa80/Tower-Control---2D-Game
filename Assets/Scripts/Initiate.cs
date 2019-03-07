@@ -20,6 +20,7 @@ public class Initiate : MonoBehaviour
     public void InitiateGameObject() {
  
             Instantiate(EnemySpawner, new Vector3(10, 10, 0), Quaternion.identity);
+
             TextBox.text = "Hover over a tower icon to learn its details. \nClick on the tower to purchase it. \n\nClick on the music icon to turn music on or off.";
             Clicked = true;
         

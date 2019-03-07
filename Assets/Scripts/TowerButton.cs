@@ -9,9 +9,16 @@ using TMPro;
 public class TowerButton : MonoBehaviour
 {
     // Start is called before the first frame update
-    public string tag;
+    /*public float fireRate;
+    public float range;
+    public int damage;
+    public string name;
+    public int cost;
+    public int Level;*/
+
+  
     public Tower currTower;
-    public Tilemap towerMap;
+  
     public TextMeshProUGUI TextBox;
     public TextMeshProUGUI HealthText;
     public TextMeshProUGUI MoneyText;

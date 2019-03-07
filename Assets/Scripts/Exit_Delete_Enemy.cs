@@ -16,7 +16,7 @@ public class Exit_Delete_Enemy : MonoBehaviour
     {
         
     }
-    public void onTriggerEnter2D(Collider2D col) {
+    public void OnTriggerEnter2D(Collider2D col) {
         print("tag: " + col.gameObject.tag);
         if (col.gameObject.CompareTag("Enemy")) {
             Destroy(col.gameObject);

@@ -51,7 +51,7 @@ public class Enemy : MonoBehaviour
             }
             this.transform.position = new Vector3(this.transform.position.x, this.transform.position.y + 0.2f, 0f);
             verticalSpeed = 0f;
-            print("turn right");
+           
 
         }
 
