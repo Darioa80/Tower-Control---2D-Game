@@ -23,6 +23,7 @@ public class Initiate : MonoBehaviour
 
             TextBox.text = "Hover over a tower icon to learn its details. \nClick on the tower to purchase it. \n\nClick on the music icon to turn music on or off.";
             Clicked = true;
+            EnemySpawner.GetComponent<Spawn_Enemies>().Clicked = true;
         
     }
 }

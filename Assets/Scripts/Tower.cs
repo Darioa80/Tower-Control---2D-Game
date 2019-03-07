@@ -1,6 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.Events;
+using TMPro;
 
 public class Tower : MonoBehaviour
 {
@@ -16,6 +19,7 @@ public class Tower : MonoBehaviour
     public Spawn_Enemies EnemyManager;
     //public List<Enemy> TargetList = new List<Enemy>();
     public List<GameObject> TargetList = new List<GameObject>();
+    private GameObject toDelete;
     public Vector3 towerPosition;
     public Projectile currProjectile;
     private Projectile tempProjectile;
@@ -23,9 +27,18 @@ public class Tower : MonoBehaviour
     private float interpolationValue = 0f;
     private bool shot;
 
+    public TextMeshProUGUI HealthText;
+    public TextMeshProUGUI MoneyText;
+    public TextMeshProUGUI ScoreText;
+    public Player player;
+
     void Start()
     {
         towerPosition = new Vector3(xCoordinate, yCoordinate, 0f);
+        player = GameObject.FindWithTag("player").GetComponent<Player>();
+        HealthText = GameObject.Find("Health Number").GetComponent<TextMeshProUGUI>();
+        MoneyText = GameObject.Find("Money").GetComponent<TextMeshProUGUI>();
+        ScoreText = GameObject.Find("Score - Text").GetComponent<TextMeshProUGUI>();
         shot = false;
     }
 
@@ -36,18 +49,20 @@ public class Tower : MonoBehaviour
         {
             if (EnemyManager.enemyList.Count > 0)
             {
-                
-                FindEnemy();
-                checkTargets();
-                Fire();
+                DeleteEnemies();    //Deletes Enemies from Enemy List (and target list) if their health <= 0
+                FindEnemy();        //Adds enemies to Target List based on distance
+                checkTargets();     //Checks if the target is too far and removes from target list if so
+                Fire();             //if there are targets, instantiates projectile
                
             }
         }
         else {
-            EnemyManager = GameObject.FindWithTag("EnemyManager").GetComponent<Spawn_Enemies>();
-            print(enemyManagerExists);
-            if (EnemyManager != null) {
-                enemyManagerExists = true;
+            if (EnemyManager.Clicked) {
+                EnemyManager = GameObject.FindWithTag("EnemyManager").GetComponent<Spawn_Enemies>();
+
+                if (EnemyManager != null) {
+                    enemyManagerExists = true;
+                }
             }
         }
     }
@@ -69,10 +84,13 @@ public class Tower : MonoBehaviour
 
     public void checkTargets()
     {
+        
         for (int i = 0; i < TargetList.Count; i++)
         {
-            checkTargetList(TargetList[i]);
-            if (Vector3.SqrMagnitude(TargetList[i].transform.position - towerPosition) > 4)
+            if (TargetList[i] == null) {
+                TargetList.Remove(TargetList[i]);
+            }
+            else if (Vector3.SqrMagnitude(TargetList[i].transform.position - towerPosition) > range) // change this value once it all works
             {
                 TargetList.Remove(TargetList[i]);
             }
@@ -86,9 +104,6 @@ public class Tower : MonoBehaviour
                 
                 tempProjectile.InstantiateProjectile(TargetList, this);
                 shot = true;
-                //tempProjectile.HitTarget();
-                tempProjectile.CalculateFinalLocation();
-                tempProjectile.HitTarget();
 
             }
         }
@@ -101,16 +116,42 @@ public class Tower : MonoBehaviour
         shot = shotBool;
     }
 
-    public void checkTargetList(GameObject currEnemy) {
-        if (currEnemy == null)
-        {
-            TargetList.Remove(currEnemy);
-        }
- 
 
-       /* if (!EnemyManager.enemyList.Contains(currEnemy)) {
-            TargetList.Remove(currEnemy);
-        }*/
+
+    public void DeleteEnemies() {
+        for (int z = 0; z < EnemyManager.enemyList.Count; z++)
+        {
+            if (EnemyManager.enemyList[z].GetComponent<Enemy>().health <= 0f)
+            {
+                UpdatePlayerInfo(EnemyManager.enemyList[z]);
+                toDelete = EnemyManager.enemyList[z];
+                if (TargetList.Contains(toDelete)) {
+                    TargetList.Remove(toDelete);
+                }
+                EnemyManager.enemyList.Remove(toDelete);
+
+                Destroy(toDelete.gameObject);
+
+            }
+        }
+
+    }
+
+    public void UpdatePlayerInfo(GameObject enemyDestroyed) {
+        Enemy enemyRef = enemyDestroyed.GetComponent<Enemy>();
+        if (enemyRef.Name == "Basic") {
+            player.score += 10;
+            player.money += 5;
+            MoneyText.text = "" + player.money;
+            ScoreText.text = "" + player.score;
+
+        }
+        else if (enemyRef.Name == "Shield") {
+            player.score += 30;
+            player.money += 25;
+            MoneyText.text = "" + player.money;
+            ScoreText.text = "" + player.score;
+        }
 
     }
 }

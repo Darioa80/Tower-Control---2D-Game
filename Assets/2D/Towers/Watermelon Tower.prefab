@@ -101,10 +101,12 @@ MonoBehaviour:
   name: Watermelon
   cost: 160
   Level: 1
-  currPorjectile: {fileID: 0}
   EnemyManager: {fileID: 4518941695075439679, guid: 63cd2a6cadd535d47adb558c4e409c5b,
     type: 3}
   TargetList: []
+  towerPosition: {x: 0, y: 0, z: 0}
+  currProjectile: {fileID: 0}
+  player: {fileID: 8186999441209209696, guid: 9af0778fdb48bd64ba54411c458ef297, type: 3}
 --- !u!61 &340429170428477378
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - Grape
   - EnemyManager
+  - player
   layers:
   - Default
   - TransparentFX

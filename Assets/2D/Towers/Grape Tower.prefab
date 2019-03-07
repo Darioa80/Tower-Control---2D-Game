@@ -96,7 +96,7 @@ MonoBehaviour:
   fireRate: 20
   xCoordinate: 0
   yCoordinate: 0
-  range: 0
+  range: 3
   damage: 5
   name: Grapes
   cost: 20
@@ -107,6 +107,7 @@ MonoBehaviour:
   towerPosition: {x: 0, y: 0, z: 0}
   currProjectile: {fileID: 1560377336638950621, guid: 7af4f94dbc4dee048b04f22306048b20,
     type: 3}
+  player: {fileID: 8186999441209209696, guid: 9af0778fdb48bd64ba54411c458ef297, type: 3}
 --- !u!61 &956161606592912421
 BoxCollider2D:
   m_ObjectHideFlags: 0

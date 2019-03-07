@@ -14,43 +14,53 @@ public class Spawn_Enemies : MonoBehaviour
     public int numWalkEnemies;
     public int numShieldEnemies;
     private GameObject Temp;
-    private GameObject toDelete;
+    
     public float spawnCoordinate_x;
     public float spawnCoordinate_y;
     public float enemySpawnTimer;
+
+    public bool Clicked;
     private int enemyCount1 = 0;
     private int enemyCount2 = 0;
     // public List<Enemy> enemyList = new List<Enemy>();
     public List<GameObject> enemyList = new List<GameObject>();
 
     public void Update() {
-        if (enemyCount1 < numWalkEnemies) {
+        if (Clicked)
+        {
+            if (enemyCount1 < numWalkEnemies)
+            {
 
-         if (enemyTimer > enemySpawnTimer) {
-                SpawnEnemies(Enemy);
-                enemyCount1++;
-                enemyTimer = 0f;
-          }
-        }
-        else if (enemyCount1 >= numWalkEnemies) {
-            if (enemyCount2 < numShieldEnemies) {
                 if (enemyTimer > enemySpawnTimer)
                 {
-                    SpawnEnemies(Enemy2);
-                    enemyCount2++;
+                    SpawnEnemies(Enemy);
+                    enemyCount1++;
                     enemyTimer = 0f;
                 }
             }
-        }
-        enemyTimer += Time.deltaTime;
-        for (int z = 0; z < enemyList.Count; z++)
-        {
-            if (enemyList[z].GetComponent<Enemy>().health <= 0f) {
-                toDelete = enemyList[z];
-                enemyList.Remove(enemyList[z]);
-                Destroy(toDelete.gameObject);
-
+            else if (enemyCount1 >= numWalkEnemies)
+            {
+                if (enemyCount2 < numShieldEnemies)
+                {
+                    if (enemyTimer > enemySpawnTimer)
+                    {
+                        SpawnEnemies(Enemy2);
+                        enemyCount2++;
+                        enemyTimer = 0f;
+                    }
+                }
             }
+            enemyTimer += Time.deltaTime;
+            /*  for (int z = 0; z < enemyList.Count; z++)
+              {
+                  if (enemyList[z].GetComponent<Enemy>().health <= 0f) {
+                      toDelete = enemyList[z];
+                      enemyList.Remove(enemyList[z]);
+
+                      Destroy(toDelete.gameObject);
+
+                  }
+              }*/
         }
     }
 
