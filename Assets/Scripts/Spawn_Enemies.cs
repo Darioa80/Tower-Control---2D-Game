@@ -14,6 +14,7 @@ public class Spawn_Enemies : MonoBehaviour
     public int numWalkEnemies;
     public int numShieldEnemies;
     private GameObject Temp;
+    private GameObject toDelete;
     public float spawnCoordinate_x;
     public float spawnCoordinate_y;
     public float enemySpawnTimer;
@@ -42,7 +43,18 @@ public class Spawn_Enemies : MonoBehaviour
             }
         }
         enemyTimer += Time.deltaTime;
+        for (int z = 0; z < enemyList.Count; z++)
+        {
+            if (enemyList[z].GetComponent<Enemy>().health <= 0f) {
+                toDelete = enemyList[z];
+                enemyList.Remove(enemyList[z]);
+                Destroy(toDelete.gameObject);
+
+            }
+        }
     }
+
+
 
 
   /*  public void startSpawn() {

@@ -94,7 +94,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 30
-  enemySpeed: 2
+  enemySpeed: 1.5
   horizontalSpeed: 0
   verticalSpeed: 0
 --- !u!1 &5178474696016672726

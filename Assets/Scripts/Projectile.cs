@@ -15,10 +15,11 @@ public class Projectile : MonoBehaviour
     private float startDistance;
     private float interpolationValue;
     private Enemy enemyReference;
-    
+
 
     //interpolation values
     public Vector3 targetFinalPosition;
+    private Vector3 targetPosition;
     private Vector3 shotDirection;
     private Vector3 startPosition;
     private bool hit;
@@ -37,15 +38,46 @@ public class Projectile : MonoBehaviour
                 HitTarget();
 
 
-                interpolationValue += (projectileSpeed * 0.1f * Time.deltaTime);
+                //interpolationValue += (projectileSpeed * 0.1f * Time.deltaTime);
             }
         }
     }
 
     public void HitTarget() {
+
+        /*shotDirection = currTarget.transform.position - this.transform.position;
+        if (shotDirection.magnitude > 0.05) {
+            this.transform.LookAt(currTarget.transform.position);
+            this.transform.Translate(shotDirection.normalized * Time.deltaTime * 0.1f * projectileSpeed, Space.World);
+        }
+        */
         //Add actual interpolation code here
-     
-        this.transform.position = ((1f - interpolationValue) * parentTower.towerPosition) + (interpolationValue * targetFinalPosition);
+
+        shotDirection = currTarget.transform.position - this.transform.position;
+        //shotDirection.Normalize();
+        print(currTarget);
+        if (currTarget != null)
+        {
+            if ((this.transform.position - currTarget.transform.position).magnitude > 0.1f)
+            {
+                this.transform.Translate(shotDirection.normalized * Time.deltaTime * projectileSpeed, Space.World);
+            }
+            else if ((this.transform.position - currTarget.transform.position).magnitude < 0.1f)
+            {
+                enemyReference = currTarget.GetComponent<Enemy>();
+                enemyReference.health = enemyReference.health - damage;
+                hit = true;
+                parentTower.UpdateShot(false);
+                Destroy(this.gameObject);
+            }
+        }
+        else {
+            parentTower.UpdateShot(false);
+            Destroy(this.gameObject);
+        }
+
+
+        /*this.transform.position = ((1f - interpolationValue) * parentTower.towerPosition) + (interpolationValue * targetFinalPosition);
        
         if (interpolationValue >= 1f) {
             enemyReference = currTarget.GetComponent<Enemy>();
@@ -60,7 +92,7 @@ public class Projectile : MonoBehaviour
             parentTower.UpdateShot();
         }
         interpolationValue += (projectileSpeed * 0.5f * Time.deltaTime);
-        //print("Interpolation value: " + interpolationValue);
+        //print("Interpolation value: " + interpolationValue);*/
 
 
     }
@@ -94,6 +126,7 @@ public class Projectile : MonoBehaviour
         parentTower = currTower;
         shotDirection = currTarget.transform.position - parentTower.towerPosition;
         shotDirection.Normalize();
+        shotDirection = shotDirection / 10f;
         startPosition = parentTower.transform.position + shotDirection;
         this.transform.position = startPosition;
     }

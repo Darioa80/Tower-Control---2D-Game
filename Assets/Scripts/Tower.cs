@@ -71,6 +71,7 @@ public class Tower : MonoBehaviour
     {
         for (int i = 0; i < TargetList.Count; i++)
         {
+            checkTargetList(TargetList[i]);
             if (Vector3.SqrMagnitude(TargetList[i].transform.position - towerPosition) > 4)
             {
                 TargetList.Remove(TargetList[i]);
@@ -96,7 +97,20 @@ public class Tower : MonoBehaviour
 
     }
 
-    public void UpdateShot() {
-        shot = false;
+    public void UpdateShot(bool shotBool) {
+        shot = shotBool;
+    }
+
+    public void checkTargetList(GameObject currEnemy) {
+        if (currEnemy == null)
+        {
+            TargetList.Remove(currEnemy);
+        }
+ 
+
+       /* if (!EnemyManager.enemyList.Contains(currEnemy)) {
+            TargetList.Remove(currEnemy);
+        }*/
+
     }
 }
