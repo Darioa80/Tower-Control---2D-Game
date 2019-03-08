@@ -11,19 +11,24 @@ public class Initiate : MonoBehaviour
     public GameObject EnemySpawner;
 
     public TextMeshProUGUI TextBox;
-    public bool Clicked = false;
+    public bool Clicked;
 
 
     public void Start() {
-  
+        Clicked = false;
     }
     public void InitiateGameObject() {
- 
+        if (!Clicked)
+        {
             Instantiate(EnemySpawner, new Vector3(10, 10, 0), Quaternion.identity);
 
             TextBox.text = "Hover over a tower icon to learn its details. \nClick on the tower to purchase it. \n\nClick on the music icon to turn music on or off.";
             Clicked = true;
             EnemySpawner.GetComponent<Spawn_Enemies>().Clicked = true;
-        
+        }
+    }
+
+    public void updateClicked(bool Bool) {
+        Clicked = Bool;
     }
 }

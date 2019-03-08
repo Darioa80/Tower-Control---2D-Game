@@ -49,5 +49,6 @@ MonoBehaviour:
   numShieldEnemies: 3
   spawnCoordinate_x: 1.5
   spawnCoordinate_y: -0.5
-  enemySpawnTimer: 1.25
+  enemySpawnTimer: 1
+  Clicked: 0
   enemyList: []
