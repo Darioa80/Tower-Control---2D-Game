@@ -51,39 +51,15 @@ public class Spawn_Enemies : MonoBehaviour
                 }
             }
             enemyTimer += Time.deltaTime;
-            /*  for (int z = 0; z < enemyList.Count; z++)
-              {
-                  if (enemyList[z].GetComponent<Enemy>().health <= 0f) {
-                      toDelete = enemyList[z];
-                      enemyList.Remove(enemyList[z]);
 
-                      Destroy(toDelete.gameObject);
 
-                  }
-              }*/
         }
     }
 
 
 
 
-  /*  public void startSpawn() {
-        if (numShieldEnemies > 0)
-        {
-            for (int i = 0; i < numShieldEnemies; i++) {
-                SpawnEnemies(Enemy2);
-            }
-            
-        }
-        if (numWalkEnemies > 0)
-        {
-            for (int i = 0; i < numWalkEnemies; i++)
-            {
-                SpawnEnemies(Enemy);
-            }
-        }
 
-    }*/
     public void SpawnEnemies(GameObject EnemyToSpawn) {
         enemyTimer = 0f;
             while (enemyTimer < enemySpawnTimer)
@@ -98,4 +74,6 @@ public class Spawn_Enemies : MonoBehaviour
 
         
     }
+
+
 }

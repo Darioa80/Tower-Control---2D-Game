@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2606690798623580549}
   - component: {fileID: 3083437424116265887}
   - component: {fileID: 5149427392381252685}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Enemy_Shield_2D
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -130,7 +130,7 @@ GameObject:
   - component: {fileID: 1979002874844729752}
   - component: {fileID: 304453489959468603}
   - component: {fileID: 7687877768109055254}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
