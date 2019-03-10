@@ -39,6 +39,11 @@ public class Tower : MonoBehaviour
         HealthText = GameObject.Find("Health Number").GetComponent<TextMeshProUGUI>();
         MoneyText = GameObject.Find("Money").GetComponent<TextMeshProUGUI>();
         ScoreText = GameObject.Find("Score - Text").GetComponent<TextMeshProUGUI>();
+        EnemyManager = GameObject.FindWithTag("EnemyManager").GetComponent<Spawn_Enemies>();
+        if (EnemyManager != null)
+        {
+            enemyManagerExists = true;
+        }
         shot = false;
     }
 
@@ -56,22 +61,22 @@ public class Tower : MonoBehaviour
                
             }
         }
-        else {
-            if (EnemyManager.Clicked) {
+       /* else {
+            if (EnemyManager.Clicked) { //check this logic
                 EnemyManager = GameObject.FindWithTag("EnemyManager").GetComponent<Spawn_Enemies>();
 
                 if (EnemyManager != null) {
                     enemyManagerExists = true;
                 }
             }
-        }
+        }*/
     }
 
     public void FindEnemy() {
 
         for(int i = 0; i < EnemyManager.enemyList.Count; i++) {
             if (!TargetList.Contains(EnemyManager.enemyList[i])) {
-                if (Vector3.SqrMagnitude(EnemyManager.enemyList[i].transform.position - towerPosition) < 4) {
+                if ((EnemyManager.enemyList[i].transform.position - towerPosition).magnitude < range) {
                     TargetList.Add(EnemyManager.enemyList[i]);
                 }
             
@@ -90,7 +95,7 @@ public class Tower : MonoBehaviour
             if (TargetList[i] == null) {
                 TargetList.Remove(TargetList[i]);
             }
-            else if (Vector3.SqrMagnitude(TargetList[i].transform.position - towerPosition) > range) // change this value once it all works
+            else if ((TargetList[i].transform.position - towerPosition).magnitude > range) // change this value once it all works
             {
                 TargetList.Remove(TargetList[i]);
             }
@@ -153,5 +158,9 @@ public class Tower : MonoBehaviour
             ScoreText.text = "" + player.score;
         }
 
+    }
+
+    public void UpdateEnemyManager(Spawn_Enemies updateToEnemyManager) {
+        EnemyManager = updateToEnemyManager;
     }
 }

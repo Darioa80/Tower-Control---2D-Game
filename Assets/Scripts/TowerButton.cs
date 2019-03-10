@@ -29,7 +29,8 @@ public class TowerButton : MonoBehaviour
     void Start()
     {
         towerClicked = false;
-       // UpdateToOriginalText();
+        // UpdateToOriginalText();
+        player = GameObject.FindWithTag("player").GetComponent<Player>();
         HealthText.text = "" + player.health;
         MoneyText.text = "" + player.money;
         ScoreText.text = "" + player.score;

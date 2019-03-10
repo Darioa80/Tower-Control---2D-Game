@@ -96,7 +96,7 @@ MonoBehaviour:
   fireRate: 10
   xCoordinate: 0
   yCoordinate: 0
-  range: 0
+  range: 3.6
   damage: 10
   name: Tomato
   cost: 40
@@ -105,7 +105,11 @@ MonoBehaviour:
     type: 3}
   TargetList: []
   towerPosition: {x: 0, y: 0, z: 0}
-  currProjectile: {fileID: 0}
+  currProjectile: {fileID: 8080122074508212237, guid: 97b317a6c9a5c32419419260bdc87a78,
+    type: 3}
+  HealthText: {fileID: 0}
+  MoneyText: {fileID: 0}
+  ScoreText: {fileID: 0}
   player: {fileID: 8186999441209209696, guid: 9af0778fdb48bd64ba54411c458ef297, type: 3}
 --- !u!61 &1892966664072936290
 BoxCollider2D:

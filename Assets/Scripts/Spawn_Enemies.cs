@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+
 public class Spawn_Enemies : MonoBehaviour
 {
     // Start is called before the first frame update
@@ -19,25 +21,40 @@ public class Spawn_Enemies : MonoBehaviour
     public float spawnCoordinate_y;
     public float enemySpawnTimer;
 
+    public bool levelEnd;
     public bool Clicked;
-    private int enemyCount1 = 0;
-    private int enemyCount2 = 0;
+    public int enemyCount1 = 0;
+    public int enemyCount2 = 0;
+
     // public List<Enemy> enemyList = new List<Enemy>();
     public List<GameObject> enemyList = new List<GameObject>();
+    
+
+    public void Start() {
+        levelEnd = false;
+        if (numShieldEnemies == 0) {
+            enemyCount2 = 1;
+        }
+        if (numWalkEnemies == 0) {
+            enemyCount1 = 1;
+        }
+    }
 
     public void Update() {
         if (Clicked)
         {
-            if (enemyCount1 < numWalkEnemies)
-            {
-
-                if (enemyTimer > enemySpawnTimer)
+            
+                if (enemyCount1 < numWalkEnemies)
                 {
-                    SpawnEnemies(Enemy);
-                    enemyCount1++;
-                    enemyTimer = 0f;
+
+                    if (enemyTimer > enemySpawnTimer)
+                    {
+                        SpawnEnemies(Enemy);
+                        enemyCount1++;
+                        enemyTimer = 0f;
+                    }
                 }
-            }
+            
             else if (enemyCount1 >= numWalkEnemies)
             {
                 if (enemyCount2 < numShieldEnemies)
@@ -51,9 +68,15 @@ public class Spawn_Enemies : MonoBehaviour
                 }
             }
             enemyTimer += Time.deltaTime;
-
-
+            if (enemyCount1 >= numWalkEnemies) {
+                if (enemyCount2 >= numShieldEnemies) {
+                    print("we in there, doug");
+                    CheckEnd();
+                }
+            }
+            
         }
+
     }
 
 
@@ -69,11 +92,12 @@ public class Spawn_Enemies : MonoBehaviour
             }
             Temp = Instantiate(EnemyToSpawn, new Vector3(spawnCoordinate_x, spawnCoordinate_y, 0), Quaternion.identity);
             enemyList.Add(Temp);
-      
-
-
-        
     }
 
+    public void CheckEnd() {
+        if (enemyList.Count == 0) {
+            levelEnd = true;
+        }
 
+    }
 }

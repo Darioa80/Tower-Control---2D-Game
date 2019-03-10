@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 8500251696776415624}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1, y: -5.858417, z: 51.821003}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -69,7 +69,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: f589147e08596214c9919c6608e22034, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -96,7 +96,7 @@ MonoBehaviour:
   fireRate: 2
   xCoordinate: 0
   yCoordinate: 0
-  range: 0
+  range: 1.2
   damage: 45
   name: Watermelon
   cost: 160
@@ -105,7 +105,11 @@ MonoBehaviour:
     type: 3}
   TargetList: []
   towerPosition: {x: 0, y: 0, z: 0}
-  currProjectile: {fileID: 0}
+  currProjectile: {fileID: 5195883003092694626, guid: e7b24fdae80cafe4d9b4bf96e8c13db8,
+    type: 3}
+  HealthText: {fileID: 0}
+  MoneyText: {fileID: 0}
+  ScoreText: {fileID: 0}
   player: {fileID: 8186999441209209696, guid: 9af0778fdb48bd64ba54411c458ef297, type: 3}
 --- !u!61 &340429170428477378
 BoxCollider2D:

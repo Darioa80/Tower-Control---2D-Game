@@ -1,6 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.Events;
+using TMPro;
 
 public class Player : MonoBehaviour
 {
@@ -8,12 +11,19 @@ public class Player : MonoBehaviour
     public int money;
     public int health;
     public int score;
+    public TextMeshProUGUI HealthText;
+    public TextMeshProUGUI MoneyText;
+    public TextMeshProUGUI ScoreText;
 
     void Start()
     {
-        money = 100;
-        health = 10;
-        score = 0;
+       
+        HealthText = GameObject.Find("Health Number").GetComponent<TextMeshProUGUI>();
+        MoneyText = GameObject.Find("Money").GetComponent<TextMeshProUGUI>();
+        ScoreText = GameObject.Find("Score - Text").GetComponent<TextMeshProUGUI>();
+        HealthText.text = "" + health;
+        MoneyText.text = "" + money;
+        ScoreText.text = "" + score;
     }
 
     // Update is called once per frame

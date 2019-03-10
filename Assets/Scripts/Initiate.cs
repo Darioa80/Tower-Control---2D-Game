@@ -9,26 +9,70 @@ public class Initiate : MonoBehaviour
 {
     // Start is called before the first frame update
     public GameObject EnemySpawner;
+    public GameObject EnemySpawner2;
+
+    public GameObject currEnemySpawner;
+    private Tower[] towers;
 
     public TextMeshProUGUI TextBox;
     public bool Clicked;
+    public bool levelOver;
+    public int level;
 
 
     public void Start() {
         Clicked = false;
+        levelOver = false;
+        level = 1;
     }
     public void InitiateGameObject() {
         if (!Clicked)
         {
-            Instantiate(EnemySpawner, new Vector3(10, 10, 0), Quaternion.identity);
-
+            if (level == 1)
+            {
+                currEnemySpawner = Instantiate(EnemySpawner, new Vector3(10, 10, 0), Quaternion.identity);
+                
+            }
+            if (level == 2) {
+                currEnemySpawner = Instantiate(EnemySpawner2, new Vector3(10, 10, 0), Quaternion.identity);
+                
+            }
             TextBox.text = "Hover over a tower icon to learn its details. \nClick on the tower to purchase it. \n\nClick on the music icon to turn music on or off.";
+            UpdateTowers();
+            currEnemySpawner.GetComponent<Spawn_Enemies>().Clicked = true;
             Clicked = true;
-            EnemySpawner.GetComponent<Spawn_Enemies>().Clicked = true;
+            levelOver = false;
+            
         }
     }
 
     public void updateClicked(bool Bool) {
         Clicked = Bool;
+    }
+
+    public void Update() {
+
+        if (currEnemySpawner.GetComponent<Spawn_Enemies>().levelEnd == true) {
+            if (!levelOver)
+            {
+                TextBox.text = "Congratulations! Click on the Start Button to start the next level!";
+                currEnemySpawner.GetComponent<Spawn_Enemies>().Clicked = false;
+                Clicked = false;
+                //Destroy(currEnemySpawner);
+                level++;
+                levelOver = true;
+            }
+            
+        }
+
+    }
+
+    public void UpdateTowers() {
+        towers = FindObjectsOfType<Tower>();
+        if (towers != null) {
+            foreach (Tower currtower in towers) {
+                currtower.UpdateEnemyManager(currEnemySpawner.GetComponent<Spawn_Enemies>());
+            }
+        }
     }
 }

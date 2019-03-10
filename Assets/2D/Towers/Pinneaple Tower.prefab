@@ -96,7 +96,7 @@ MonoBehaviour:
   fireRate: 5
   xCoordinate: 0
   yCoordinate: 0
-  range: 0
+  range: 2.4
   damage: 20
   name: Pineapple
   cost: 80
@@ -105,7 +105,11 @@ MonoBehaviour:
     type: 3}
   TargetList: []
   towerPosition: {x: 0, y: 0, z: 0}
-  currProjectile: {fileID: 0}
+  currProjectile: {fileID: 1883725796203596787, guid: c7b1bfd463f6d204bb97c4e2d404a71d,
+    type: 3}
+  HealthText: {fileID: 0}
+  MoneyText: {fileID: 0}
+  ScoreText: {fileID: 0}
   player: {fileID: 8186999441209209696, guid: 9af0778fdb48bd64ba54411c458ef297, type: 3}
 --- !u!61 &1338939145307407898
 BoxCollider2D:
