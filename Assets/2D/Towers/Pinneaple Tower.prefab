@@ -96,7 +96,7 @@ MonoBehaviour:
   fireRate: 5
   xCoordinate: 0
   yCoordinate: 0
-  range: 2.4
+  range: 2.2
   damage: 20
   name: Pineapple
   cost: 80
@@ -111,6 +111,7 @@ MonoBehaviour:
   MoneyText: {fileID: 0}
   ScoreText: {fileID: 0}
   player: {fileID: 8186999441209209696, guid: 9af0778fdb48bd64ba54411c458ef297, type: 3}
+  levelInfo: {fileID: 0}
 --- !u!61 &1338939145307407898
 BoxCollider2D:
   m_ObjectHideFlags: 0

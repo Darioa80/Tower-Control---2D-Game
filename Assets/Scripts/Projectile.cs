@@ -89,7 +89,6 @@ public class Projectile : MonoBehaviour
         shotDirection = shotDirection / 10f;
         startPosition = parentTower.transform.position + shotDirection;
         this.transform.position = startPosition;
-        //projectileSpeed = parentTower.fireRate / 10f;
         projectileSpeed = 2f + parentTower.fireRate / 50f;
     }
     

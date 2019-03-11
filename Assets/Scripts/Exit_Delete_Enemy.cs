@@ -33,9 +33,6 @@ public class Exit_Delete_Enemy : MonoBehaviour
         if (col.gameObject.CompareTag("Enemy")) {
             player.health = player.health - 1;
             HealthText.text = "" + player.health;
-            if (player.health <= 0) {
-                //SceneManager.LoadScene(4);
-            }
             toDel = SearchEnemyList(col.gameObject);
             EnemyManager.enemyList.Remove(EnemyManager.enemyList[toDel]);
             Destroy(col.gameObject);

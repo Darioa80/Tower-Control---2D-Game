@@ -68,7 +68,7 @@ public class Initiate : MonoBehaviour
                 TextBox.text = "Congratulations! Click on the Start Button to start the next level!";
                 currEnemySpawner.GetComponent<Spawn_Enemies>().Clicked = false;
                 Clicked = false;
-                //Destroy(currEnemySpawner);
+               
                 level++;
                 levelOver = true;
             }

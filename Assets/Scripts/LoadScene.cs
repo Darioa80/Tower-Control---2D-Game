@@ -22,4 +22,8 @@ public class LoadScene : MonoBehaviour
         //print("Scene number: " + sceneNum);
         SceneManager.LoadScene(sceneNum);
     }
+
+    public void QuitGame() {
+        Application.Quit();
+    }
 }

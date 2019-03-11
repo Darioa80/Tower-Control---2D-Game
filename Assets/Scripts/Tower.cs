@@ -42,7 +42,7 @@ public class Tower : MonoBehaviour
         MoneyText = GameObject.Find("Money").GetComponent<TextMeshProUGUI>();
         ScoreText = GameObject.Find("Score - Text").GetComponent<TextMeshProUGUI>();
         levelInfo = GameObject.FindWithTag("Initiate").GetComponent<Initiate>();
-        // EnemyManager = GameObject.FindWithTag("EnemyManager").GetComponent<Spawn_Enemies>();
+       
         EnemyManager = levelInfo.currEnemySpawner.GetComponent<Spawn_Enemies>();
         if (EnemyManager != null)
         {
@@ -71,7 +71,7 @@ public class Tower : MonoBehaviour
 
         for(int i = 0; i < EnemyManager.enemyList.Count; i++) {
             if (!TargetList.Contains(EnemyManager.enemyList[i])) {
-               // print((EnemyManager.enemyList[i].transform.position - towerPosition).magnitude);
+              
                 if ((EnemyManager.enemyList[i].transform.position - towerPosition).magnitude < range) {
                     TargetList.Add(EnemyManager.enemyList[i]);
                 }
@@ -91,7 +91,7 @@ public class Tower : MonoBehaviour
             if (TargetList[i] == null) {
                 TargetList.Remove(TargetList[i]);
             }
-            else if ((TargetList[i].transform.position - towerPosition).magnitude > range) // change this value once it all works
+            else if ((TargetList[i].transform.position - towerPosition).magnitude > range) 
             {
                 TargetList.Remove(TargetList[i]);
             }
@@ -142,14 +142,14 @@ public class Tower : MonoBehaviour
         Enemy enemyRef = enemyDestroyed.GetComponent<Enemy>();
         if (enemyRef.Name == "Basic") {
             player.score += 20;
-            player.money += 10;
+            player.money += 5;
             MoneyText.text = "" + player.money;
             ScoreText.text = "" + player.score;
 
         }
         else if (enemyRef.Name == "Shield") {
             player.score += 40;
-            player.money += 20;
+            player.money += 15;
             MoneyText.text = "" + player.money;
             ScoreText.text = "" + player.score;
         }

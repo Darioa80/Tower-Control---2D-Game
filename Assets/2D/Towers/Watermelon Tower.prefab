@@ -96,7 +96,7 @@ MonoBehaviour:
   fireRate: 2
   xCoordinate: 0
   yCoordinate: 0
-  range: 1.5
+  range: 1.4
   damage: 45
   name: Watermelon
   cost: 160

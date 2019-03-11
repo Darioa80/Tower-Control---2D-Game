@@ -96,7 +96,7 @@ MonoBehaviour:
   fireRate: 10
   xCoordinate: 0
   yCoordinate: 0
-  range: 3.6
+  range: 3.5
   damage: 10
   name: Tomato
   cost: 40
@@ -111,6 +111,7 @@ MonoBehaviour:
   MoneyText: {fileID: 0}
   ScoreText: {fileID: 0}
   player: {fileID: 8186999441209209696, guid: 9af0778fdb48bd64ba54411c458ef297, type: 3}
+  levelInfo: {fileID: 0}
 --- !u!61 &1892966664072936290
 BoxCollider2D:
   m_ObjectHideFlags: 0

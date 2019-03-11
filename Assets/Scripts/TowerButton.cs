@@ -29,7 +29,7 @@ public class TowerButton : MonoBehaviour
     void Start()
     {
         towerClicked = false;
-        // UpdateToOriginalText();
+        
         player = GameObject.FindWithTag("player").GetComponent<Player>();
         HealthText.text = "" + player.health;
         MoneyText.text = "" + player.money;
@@ -37,7 +37,7 @@ public class TowerButton : MonoBehaviour
         
     }
 
-    // Update is called once per frame
+  
     void Update()
     {
         if (towerClicked) {
@@ -48,6 +48,7 @@ public class TowerButton : MonoBehaviour
     }
 
     public void Click() {
+
         if (currTower.cost <=  player.money) {
             if (currTower.name == "Health")
             {
@@ -60,8 +61,7 @@ public class TowerButton : MonoBehaviour
                 TextBox.text = "You have selected the " + currTower.name + " Tower. Click on any area of dirt to place the tower.";
                 UpdatePlayerInfo();
                 towerClicked = true;
-                //CreateTower();
-                //Instantiate()
+                
             }
         }
     }
@@ -75,7 +75,6 @@ public class TowerButton : MonoBehaviour
             Tower tempTower = Instantiate(currTower, mouseLoc, Quaternion.identity);
             tempTower.xCoordinate = mouseLoc.x;
             tempTower.yCoordinate = mouseLoc.y;
-            //towerMap.SetTile(new Vector3Int((int)Mathf.Round(tempTower.xCoordinate), (int)Mathf.Round(tempTower.yCoordinate), 0), tempTower); 
             towerClicked = false;
             UpdateToOriginalText();
         }
@@ -83,8 +82,8 @@ public class TowerButton : MonoBehaviour
 
     }
     public void UpdateToOriginalText() {
-        TextBox.text = "Hover over a tower icon to learn its details. \nClick on the tower to purchase it. \n\nClick on the music icon to turn music on or off.";
-        //TextBox.text = "Hover over a tower icon to learn its details. \n\nClick on the tower to purchase it.";
+        TextBox.text = "Hover over a tower icon to learn its details. \nClick on the tower to purchase it. \nClick on the music icon to turn music on or off.";
+       
     }
 
     public void onHover() {
