@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: Shield
-  health: 50
+  health: 70
   enemySpeed: 1.3333
   horizontalSpeed: 0
   verticalSpeed: 0

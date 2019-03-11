@@ -32,6 +32,8 @@ public class Tower : MonoBehaviour
     public TextMeshProUGUI ScoreText;
     public Player player;
 
+    public Initiate levelInfo;
+
     void Start()
     {
         towerPosition = new Vector3(xCoordinate, yCoordinate, 0f);
@@ -39,7 +41,9 @@ public class Tower : MonoBehaviour
         HealthText = GameObject.Find("Health Number").GetComponent<TextMeshProUGUI>();
         MoneyText = GameObject.Find("Money").GetComponent<TextMeshProUGUI>();
         ScoreText = GameObject.Find("Score - Text").GetComponent<TextMeshProUGUI>();
-        EnemyManager = GameObject.FindWithTag("EnemyManager").GetComponent<Spawn_Enemies>();
+        levelInfo = GameObject.FindWithTag("Initiate").GetComponent<Initiate>();
+        // EnemyManager = GameObject.FindWithTag("EnemyManager").GetComponent<Spawn_Enemies>();
+        EnemyManager = levelInfo.currEnemySpawner.GetComponent<Spawn_Enemies>();
         if (EnemyManager != null)
         {
             enemyManagerExists = true;
@@ -61,21 +65,13 @@ public class Tower : MonoBehaviour
                
             }
         }
-       /* else {
-            if (EnemyManager.Clicked) { //check this logic
-                EnemyManager = GameObject.FindWithTag("EnemyManager").GetComponent<Spawn_Enemies>();
-
-                if (EnemyManager != null) {
-                    enemyManagerExists = true;
-                }
-            }
-        }*/
     }
 
     public void FindEnemy() {
 
         for(int i = 0; i < EnemyManager.enemyList.Count; i++) {
             if (!TargetList.Contains(EnemyManager.enemyList[i])) {
+               // print((EnemyManager.enemyList[i].transform.position - towerPosition).magnitude);
                 if ((EnemyManager.enemyList[i].transform.position - towerPosition).magnitude < range) {
                     TargetList.Add(EnemyManager.enemyList[i]);
                 }
@@ -145,15 +141,15 @@ public class Tower : MonoBehaviour
     public void UpdatePlayerInfo(GameObject enemyDestroyed) {
         Enemy enemyRef = enemyDestroyed.GetComponent<Enemy>();
         if (enemyRef.Name == "Basic") {
-            player.score += 10;
-            player.money += 5;
+            player.score += 20;
+            player.money += 10;
             MoneyText.text = "" + player.money;
             ScoreText.text = "" + player.score;
 
         }
         else if (enemyRef.Name == "Shield") {
-            player.score += 30;
-            player.money += 25;
+            player.score += 40;
+            player.money += 20;
             MoneyText.text = "" + player.money;
             ScoreText.text = "" + player.score;
         }

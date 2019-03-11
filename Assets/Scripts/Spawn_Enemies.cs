@@ -70,7 +70,7 @@ public class Spawn_Enemies : MonoBehaviour
             enemyTimer += Time.deltaTime;
             if (enemyCount1 >= numWalkEnemies) {
                 if (enemyCount2 >= numShieldEnemies) {
-                    print("we in there, doug");
+                    
                     CheckEnd();
                 }
             }

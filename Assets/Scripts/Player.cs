@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.Events;
 using TMPro;
@@ -14,7 +15,7 @@ public class Player : MonoBehaviour
     public TextMeshProUGUI HealthText;
     public TextMeshProUGUI MoneyText;
     public TextMeshProUGUI ScoreText;
-
+    
     void Start()
     {
        
@@ -29,6 +30,8 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (health == 0) {
+        SceneManager.LoadScene(3);
+        }
     }
 }

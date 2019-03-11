@@ -11,13 +11,15 @@ public class Exit_Delete_Enemy : MonoBehaviour
     private TextMeshProUGUI HealthText;
     private Player player;
     private Spawn_Enemies EnemyManager;
+    public Initiate levelInfo;
+
     int toDel;
     // Start is called before the first frame update
     void Start()
     {
         HealthText = GameObject.Find("Health Number").GetComponent<TextMeshProUGUI>();
         player = GameObject.FindWithTag("player").GetComponent<Player>();
-        
+        levelInfo = GameObject.FindWithTag("Initiate").GetComponent<Initiate>();
     }
 
     // Update is called once per frame
@@ -26,7 +28,8 @@ public class Exit_Delete_Enemy : MonoBehaviour
         
     }
     public void OnTriggerEnter2D(Collider2D col) {
-        EnemyManager = GameObject.FindWithTag("EnemyManager").GetComponent<Spawn_Enemies>();
+        levelInfo = GameObject.FindWithTag("Initiate").GetComponent<Initiate>();
+        EnemyManager = levelInfo.currEnemySpawner.GetComponent<Spawn_Enemies>();
         if (col.gameObject.CompareTag("Enemy")) {
             player.health = player.health - 1;
             HealthText.text = "" + player.health;

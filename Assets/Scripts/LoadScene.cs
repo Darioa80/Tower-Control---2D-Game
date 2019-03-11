@@ -19,7 +19,7 @@ public class LoadScene : MonoBehaviour
     }
 
     public void LoadGame(int sceneNum) {
-        print("Scene number: " + sceneNum);
+        //print("Scene number: " + sceneNum);
         SceneManager.LoadScene(sceneNum);
     }
 }
