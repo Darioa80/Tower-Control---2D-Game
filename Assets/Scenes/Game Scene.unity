@@ -382,7 +382,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87274387a0501a64899671956ca254d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  money: 80
+  money: 100
   health: 5
   score: 0
   HealthText: {fileID: 0}

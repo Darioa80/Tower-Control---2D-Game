@@ -17,7 +17,8 @@ public class Enemy : MonoBehaviour
 
     void Start()
     {
-        verticalSpeed = -(enemySpeed * Time.deltaTime);
+        // verticalSpeed = -(enemySpeed * Time.deltaTime);
+        verticalSpeed = -enemySpeed;
         EnemyManager = GameObject.FindWithTag("EnemyManager").GetComponent<Spawn_Enemies>();
         slowed = false;
     }
@@ -25,7 +26,7 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        this.transform.Translate(new Vector3(horizontalSpeed, verticalSpeed, 0f));
+        this.transform.Translate(new Vector3(horizontalSpeed * Time.deltaTime , verticalSpeed * Time.deltaTime, 0f));
         
     }
 
@@ -90,7 +91,7 @@ public class Enemy : MonoBehaviour
 
             else if (horizontalSpeed > 0f)
             {
-                Debug.DrawRay(this.transform.position, (new Vector3(this.transform.position.x, this.transform.position.y + 1f, 0f) - this.transform.position) * 2f, Color.yellow);
+               // Debug.DrawRay(this.transform.position, (new Vector3(this.transform.position.x, this.transform.position.y + 1f, 0f) - this.transform.position) * 2f, Color.yellow);
 
                 hit = Physics2D.Raycast(off, Vector2.up);
                 print(hit.collider);
